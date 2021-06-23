@@ -11,23 +11,23 @@ namespace SocialApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SocialApiController : ControllerBase
+    public class postsController : ControllerBase
     {
         private readonly SocialApiContext _context;
 
-        public SocialApiController(SocialApiContext context)
+        public postsController(SocialApiContext context)
         {
             _context = context;
         }
 
-        // GET: api/SocialApi
+        // GET: api/posts
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Post>>> GetPost()
         {
             return await _context.Post.ToListAsync();
         }
 
-        // GET: api/SocialApi/5
+        // GET: api/posts/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Post>> GetPost(int id)
         {
@@ -41,7 +41,7 @@ namespace SocialApi.Controllers
             return post;
         }
 
-        // PUT: api/SocialApi/5
+        // PUT: api/posts/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutPost(int id, Post post)
@@ -72,7 +72,7 @@ namespace SocialApi.Controllers
             return NoContent();
         }
 
-        // POST: api/SocialApi
+        // POST: api/posts
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Post>> PostPost(Post post)
@@ -83,7 +83,7 @@ namespace SocialApi.Controllers
             return CreatedAtAction("GetPost", new { id = post.ID }, post);
         }
 
-        // DELETE: api/SocialApi/5
+        // DELETE: api/posts/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePost(int id)
         {
